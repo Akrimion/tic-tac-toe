@@ -23,7 +23,7 @@ var Box = React.createClass({
 	
   'render': function onRender () {
     return (
-      <button onClick={this.handleClick} style={boxStyle}>{this.state.value}</button>
+      <button onClick={this.handleClick} style={boxStyle} value={this.state.value}>{this.state.value}</button>
 	  
     );
 	
@@ -32,16 +32,20 @@ var Box = React.createClass({
 
 var Row = React.createClass({
 	
+	getInitialState: function() {
+		return {value: this.props.initialValue};
+	},
+	
 	'render': function onRender () {
     return (
     <div>  
-	  <Box initialValue='_'/>
-	  <Box initialValue='_'/>
-	  <Box initialValue='_'/>
+		{this.props.list.map(function(result) {
+           return <Box initialValue={result}/>;
+        })}	
 	</div>
-    );
+	);
 	}
 });
 
-React.render(<Row/>,document.body);
+React.render(<Row list={['_','_','_']}/>,document.body);
 
