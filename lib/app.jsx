@@ -24,6 +24,7 @@ var Box = React.createClass({
   'render': function onRender () {
     return (
       <button onClick={this.handleClick} style={boxStyle}>{this.state.value}</button>
+	  
     );
 	
   }
